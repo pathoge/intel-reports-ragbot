@@ -1,0 +1,5 @@
+elasticsearch
+openai
+pypdf
+streamlit
+watchdog
