@@ -18,7 +18,7 @@ This repo contains artifacts & Python programs to generate completely fake intel
 docker build --no-cache -t ia-genai-demo:latest .
 ```
 
-3. While that's running, make a copy of `config.toml`, rename it to something memorable, and fill out the required settings (note - you can choose Azure or Local LLM):
+3. While that's running, make a copy of `config.toml`, rename it to something memorable, and fill out the required settings (note - this app is designed to be used by Elasticians with our internal LLM proxy):
 ```
 NUM_REPORTS = number of fake reports to generate
 
@@ -26,18 +26,10 @@ ELASTIC_CLOUD_ID = Elastic cloud ID to send output to
 ELASTIC_API_KEY = Elasticseach API key to use (optional if using username/password)
 ELASTIC_USER = Elasticsearch username to use (optional if using api key)
 ELASTIC_PASSWORD = Elasticsearch password to use (optional if using api key)
-ELASTIC_INDEX = index name to use (recommend "intel-reports")
+ELASTIC_INDEX = "intel-reports"
 
-AZURE_OPENAI_API_KEY = Azure OpenAI key
-AZURE_API_VERSION = Azure OpenAI API version (e.g. "2024-02-01")
-AZURE_ENDPOINT = Azure OpenAI endpoint URL
-AZURE_DEPLOYMENT = Azure OpenAI deployment name
-AZURE_MODEL = Azure OpenAI model to use
-
-LOCAL_LLM = "false"
-LOCAL_LLM_URL = URL of self-hosted LLM to use (e.g. http://1.2.3.4:1234/v1)
-LOCAL_LLM_API_KEY = self-hosted LLM API key (if security is not enabled, this can be anything)
-LOCAL_LLM_MODEL = self-hosted model to use (e.g. mixtral)
+LLM_PROXY_BASE_URL = LLM proxy URL
+LLM_PROXY_API_KEY = LLM proxy API key
 ```
 
 4. Run the container and pass in your `config.toml` at runtime:
